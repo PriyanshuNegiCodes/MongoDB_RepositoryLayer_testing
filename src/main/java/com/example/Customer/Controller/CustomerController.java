@@ -30,7 +30,7 @@ public class CustomerController {
     public ResponseEntity<?> getCustomer(){
         return new ResponseEntity<>(iCustomerService.getCustomer(), HttpStatus.OK);
     }
-    @GetMapping("/getSamsung/{productName}")
+    @GetMapping("/getProductName/{productName}")
     public ResponseEntity<?> getProductName(@PathVariable String productName){
         return new ResponseEntity<>(iCustomerService.getProductName(productName), HttpStatus.OK);
     }
