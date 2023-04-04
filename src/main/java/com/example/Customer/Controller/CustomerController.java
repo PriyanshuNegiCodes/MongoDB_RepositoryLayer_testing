@@ -1,6 +1,8 @@
 package com.example.Customer.Controller;
 
 import com.example.Customer.Domain.Customer;
+import com.example.Customer.Exception.CustomerAlreadyExistException;
+import com.example.Customer.Exception.CustomerNotFoundExceptoin;
 import com.example.Customer.Services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +21,11 @@ public class CustomerController {
     }
 
     @PostMapping("/addCustomer")
-    public ResponseEntity<?> addCustomer(@RequestBody  Customer customer){
+    public ResponseEntity<?> addCustomer(@RequestBody  Customer customer) throws CustomerAlreadyExistException {
         return new ResponseEntity<>(iCustomerService.addCustomer(customer), HttpStatus.CREATED);
     }
     @DeleteMapping("/deleteCustomer/{id}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable int id){
+    public ResponseEntity<?> deleteCustomer(@PathVariable int id) throws CustomerNotFoundExceptoin {
         return new ResponseEntity<>(iCustomerService.deleteCustomer(id), HttpStatus.OK);
     }
     @GetMapping("/getCustomer")
