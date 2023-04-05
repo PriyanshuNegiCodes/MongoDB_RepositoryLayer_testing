@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Data
 @Document
-@EqualsAndHashCode
 public class Customer {
     @Id
     private int customerId;

@@ -95,11 +95,36 @@ class CustomerApplicationTests {
 		List<Customer> customerList = iCustomerRepository.findAll();
 		assertNotEquals("Matching", 2, customerList.size());
 	}
+
 	@Test
-	public void testFindSamsung(){
+	public void testGetSamsungProduct() {
+
 		iCustomerRepository.insert(customer);
 		iCustomerRepository.insert(customer1);
-		List<Customer> customerData=iCustomerRepository.getProductName(customer.getCustomerName());
-		assertEquals("Matched",customerData, customer.getCustomerProduct().getProductName());
+		List<Customer> samsungCustomers = iCustomerRepository.getSamsungProduct();
+		assertEquals("Matching", "Samsung", samsungCustomers.get(0).getCustomerProduct().getProductName());
+
+	}
+	public void testGetSamsungProductFail() {
+
+		iCustomerRepository.insert(customer);
+		iCustomerRepository.insert(customer1);
+		List<Customer> samsungCustomers = iCustomerRepository.getSamsungProduct();
+		assertNotEquals("Matching", "Nokia", samsungCustomers.get(0).getCustomerProduct().getProductName());
+
+	}
+	@Test
+	public void testGetProductName(){
+		iCustomerRepository.insert(customer1);
+		iCustomerRepository.insert(customer);
+		List<Customer> fetchedProductName=iCustomerRepository.getProductName("Nokia");
+		assertEquals("Matching", "Nokia", fetchedProductName.get(0).getCustomerProduct().getProductName());
+	}
+	@Test
+	public void testGetProductNameFail(){
+		iCustomerRepository.insert(customer1);
+		iCustomerRepository.insert(customer);
+		List<Customer> fetchedProductName=iCustomerRepository.getProductName("Nokia");
+		assertNotEquals("Matching", "Samsung", fetchedProductName.get(0).getCustomerProduct().getProductName());
 	}
 }
