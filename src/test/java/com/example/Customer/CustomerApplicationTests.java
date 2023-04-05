@@ -9,10 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.util.Assert;
-
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -121,10 +118,10 @@ class CustomerApplicationTests {
 		assertEquals("Matching", "Nokia", fetchedProductName.get(0).getCustomerProduct().getProductName());
 	}
 	@Test
-	public void testGetProductNameFail(){
+	public void testGetProductNameFail() {
 		iCustomerRepository.insert(customer1);
 		iCustomerRepository.insert(customer);
-		List<Customer> fetchedProductName=iCustomerRepository.getProductName("Nokia");
+		List<Customer> fetchedProductName = iCustomerRepository.getProductName("Nokia");
 		assertNotEquals("Matching", "Samsung", fetchedProductName.get(0).getCustomerProduct().getProductName());
 	}
 }
