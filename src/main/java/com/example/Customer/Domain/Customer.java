@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @EqualsAndHashCode
 public class Customer {
-
     @Id
     private int customerId;
     private String customerName;
