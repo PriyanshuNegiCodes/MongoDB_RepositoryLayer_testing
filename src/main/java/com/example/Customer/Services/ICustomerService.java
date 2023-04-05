@@ -12,4 +12,5 @@ public interface ICustomerService {
     List<Customer> getCustomer() ;
     List<Customer> getProductName(String productName);
     List<Customer> getSamsung();
+
 }

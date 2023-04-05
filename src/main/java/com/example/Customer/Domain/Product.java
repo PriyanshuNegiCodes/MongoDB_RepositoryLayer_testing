@@ -1,15 +1,13 @@
 package com.example.Customer.Domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Data
+@EqualsAndHashCode
 public class Product {
     private int productId;
     private String productName;
